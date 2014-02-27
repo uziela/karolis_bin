@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Written by Karolis Uziela in 2012
+
+# Print sequence identity percentage of the two sequences
+
+if [ $# != 2 ] ; then
+    echo "
+Usage: 
+
+$0 [Parameters]
+
+Parameters:
+<seq1>
+<seq2>
+
+"
+    exit 1
+fi
+
+seq1=$1
+seq2=$2
+
+MYDATE=`date --rfc-3339=date`
+MYTMP1=/tmp/$USER-$MYDATE-$$-seqidentity-1.tmp
+MYTMP2=/tmp/$USER-$MYDATE-$$-seqidentity-2.tmp
+MYTMP3=/tmp/$USER-$MYDATE-$$-seqidentity-3.tmp
+
+echo ">firstseq" > $MYTMP1
+echo $seq1 >> $MYTMP1
+echo ">secondseq" > $MYTMP2
+echo $seq2 >> $MYTMP2
+
+needle -sprotein -gapopen 10.0 -gapextend 0.5 $MYTMP1 $MYTMP2 $MYTMP3 2>/dev/null
+
+perl -ne 'if (/^# Identity:.*\(\s*(\S+)\%\)/) { print "$1\n" }' $MYTMP3
+rm $MYTMP1 $MYTMP2 $MYTMP3

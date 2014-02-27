@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Written by Karolis Uziela in 2012
+
+if [ $# != 3 ] ; then
+    echo "
+Usage: 
+
+$0 [Parameters]
+
+Parameters:
+<string>
+<start_pos>
+<end_pos>
+
+"
+    exit 1
+fi
+
+input_str=$1
+start_pos=$2
+end_pos=$3
+
+let to_take=$end_pos-$start_pos+1
+echo $input_str | awk "{print substr(\$0,$start_pos,$to_take)}"

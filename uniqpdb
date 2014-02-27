@@ -1,0 +1,21 @@
+#!/bin/bash
+# Lists all unique pdb identifiers in a directory
+
+# Written by Karolis Uziela in 2012
+
+if [ $# != 1 ] ; then
+    echo "
+Usage: 
+
+$0 [Parameters]
+
+Parameters:
+<input-dir>
+
+"
+    exit 1
+fi
+
+input_dir=$1
+
+ls --color=never $input_dir  | xargs -I {} -n1 substr {} 1 4 | sort | uniq

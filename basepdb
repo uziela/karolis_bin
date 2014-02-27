@@ -1,0 +1,22 @@
+#!/bin/bash
+# Extracts pdb id from a filepath
+
+# Written by Karolis Uziela in 2012
+
+if [ $# != 1 ] ; then
+    echo "
+Usage: 
+
+$0 [Parameters]
+
+Parameters:
+<pdb-file-path>
+
+"
+    exit 1
+fi
+
+input=$1
+
+base=`basename $input`
+echo `substr $base 1 4`

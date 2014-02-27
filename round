@@ -1,0 +1,21 @@
+#!/bin/bash
+# rounds a float to an int
+
+# Written by Karolis Uziela in 2012
+
+if [ $# != 1 ] ; then
+    echo "
+Usage: 
+
+$0 [Parameters]
+
+Parameters:
+<float>
+
+"
+    exit 1
+fi
+
+input_float=$1
+
+python -c "print int($input_float)"

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Written by Karolis Uziela in 2012
+
+script_name=`basename $0`
+
+if [ $# != 1 ] ; then
+    echo "
+Usage: 
+
+$script_name <fasta-file>
+
+"
+    exit 1
+fi
+
+fasta_file=$1
+
+tail -n +2 $fasta_file | tr -d "\n" | wc -c
