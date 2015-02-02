@@ -38,6 +38,7 @@ echo "
 load $target_file
 load $model_file
 load $model_file2
+load $model_file3
 hide all
 show cartoon
 align $model_base, $target_base
