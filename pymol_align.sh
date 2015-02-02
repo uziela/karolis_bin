@@ -34,6 +34,7 @@ load $model_file
 hide all
 show cartoon
 align $target_base, $model_base
+center
 " > $TFILE
 
 pymol -u $TFILE
