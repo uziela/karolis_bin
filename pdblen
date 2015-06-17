@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Written by Karolis Uziela in 2012
+
+script_name=`basename $0`
+
+if [ $# != 1 ] ; then
+    echo "
+Usage: 
+
+$script_name <fasta-file>
+
+"
+    exit 1
+fi
+
+pdb_file=$1
+
+aa321CA-all-chains.pl $pdb_file | tr -d "\n" | wc -c
