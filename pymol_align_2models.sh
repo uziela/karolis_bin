@@ -42,6 +42,6 @@ align $model_base2, $target_base
 center
 " > $TFILE
 
-pymol -u $TFILE
+/Applications/MacPyMOLEdu.app/Contents/MacOS/MacPyMOL -u $TFILE
 
 rm $TFILE
