@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Written by Karolis Uziela in 2024
+
+script_name=`basename $0`
+
+if [ $# != 1 ] ; then
+    echo "
+Usage: 
+
+$script_name [Parameters]
+
+Parameters:
+<input-file> 
+
+"
+    exit 1
+fi
+
+input_file=$1
+
+tmp_name=`openssl rand -base64 10`
+
+mkdir /tmp/eogf_$tmp_name
+
+cp $input_file /tmp/eogf_$tmp_name
+
+eog /tmp/eogf_$tmp_name
+
+rm -r /tmp/eogf_$tmp_name
